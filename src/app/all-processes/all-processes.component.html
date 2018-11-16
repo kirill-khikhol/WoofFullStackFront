@@ -1,22 +1,35 @@
-<div class="container" style="background-color:rgb(99, 75, 44);">
+<div class="container-fluid bg-dark">
   <div class="container">
     <h1>Processes</h1>
-    <div class="header container-fluid">
-      <div>
-        <a class="active" href="#home" (click)="showCondition='New'">New({{newCount}})</a>
-        <a href="#contact" (click)="showCondition='Accsepted'">Accsepted({{accseptedCount}})</a>
-        <a href="#about" (click)="showCondition='All'">All({{allProcesses.length}})</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a routerLink="/processes" class="nav-link" (click)="showCondition='New'">New({{newCount}})</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/processes" class="nav-link" (click)="showCondition='Accsepted'">Accsepted({{accseptedCount}})</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/processes" class="nav-link" (click)="showCondition='All'">All({{allProcesses.length}})</a>
+          </li>
+        </ul>
       </div>
+    </nav>
+    <br/>
 
-    </div>
+    <!-- <router-outlet></router-outlet> -->
+
     <p *ngFor="let process of allProcesses">
-      <app-process *ngIf="process.status=='New'&&(showCondition=='New'||showCondition=='All')" [process]="process"></app-process>
+      <app-process *ngIf="process.status=='New'&&(showCondition=='New'||showCondition=='All')" [process]="process"
+        (changeStatus)="counNews()"></app-process>
     </p>
     <p *ngFor="let process of allProcesses">
-      <app-process *ngIf="process.status=='Accsepted'&&(showCondition=='Accsepted'||showCondition=='All')" [process]="process"></app-process>
+      <app-process *ngIf="process.status=='Accsepted'&&(showCondition=='Accsepted'||showCondition=='All')" [process]="process"
+        (changeStatus)="counNews()"></app-process>
     </p>
     <p *ngFor="let process of allProcesses">
-      <app-process *ngIf="process.status=='Rejected'&& showCondition=='All'" [process]="process"></app-process>
+      <app-process *ngIf="process.status=='Rejected'&& showCondition=='All'" [process]="process" (changeStatus)="counNews()"></app-process>
     </p>
   </div>
 </div>

@@ -1,12 +1,12 @@
-import { Process } from '../../model/process.model';
 import { Component, OnInit } from '@angular/core';
+import { Process } from 'src/model/process.model';
 
 @Component({
-  selector: 'app-all-processes',
-  templateUrl: './all-processes.component.html',
-  styleUrls: ['./all-processes.component.css']
+  selector: 'app-processes',
+  templateUrl: './processes.component.html',
+  styleUrls: ['./processes.component.css']
 })
-export class AllProcessesComponent implements OnInit {
+export class ProcessesComponent implements OnInit {
   allProcesses: Process[] = [];
   newCount: number = 0;
   accseptedCount: number = 0;

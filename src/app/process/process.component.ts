@@ -1,5 +1,5 @@
-import { Process } from './../../model/Process';
-import { Component, Input } from '@angular/core';
+import { Process } from '../../model/process.model';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-process',
@@ -8,5 +8,16 @@ import { Component, Input } from '@angular/core';
 })
 export class ProcessComponent {
 @Input() process:Process;
+@Output() changeStatus:EventEmitter<void>=new EventEmitter();
 
+accseptStatus() {
+  this.process.status = "Accsepted";
+  this.changeStatus.emit();
+  // this.process.allprocsesses.counNews();
+}
+rejectStatus() {
+  this.process.status = "Rejected";
+  this.changeStatus.emit();
+  // this.process.allprocsesses.counNews();
+}
 }
