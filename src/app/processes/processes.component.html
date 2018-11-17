@@ -11,7 +11,7 @@
               <a routerLink="/processes/accepted" class="nav-link" (click)="showCondition='Accepted'">Accepted({{candidate.acceptedCount}})</a>
             </li>
             <li class="nav-item">
-              <a routerLink="/processes/all" class="nav-link" (click)="showCondition='All'">All({{candidate.newCount+candidate.acceptedCount+candidate.rejectedCount}})</a>
+              <a routerLink="/processes/all" class="nav-link" (click)="showCondition='All'">All({{candidate.allCount}})</a>
             </li>
           </ul>
         </div>

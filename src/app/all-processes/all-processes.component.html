@@ -4,6 +4,6 @@
 <p *ngFor="let process of processes.acceptedProcesses">
     <app-process [process]="process" (changeStatus)="processes.changeStatus()"></app-process>
 </p>
-<p *ngFor="let process of processes.allProcesses">
+<p *ngFor="let process of processes.rejectedProcesses">
     <app-process [process]="process" (changeStatus)="processes.changeStatus()"></app-process>
 </p>

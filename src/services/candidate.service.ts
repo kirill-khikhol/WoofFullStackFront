@@ -9,6 +9,7 @@ export class CandidateServise {
     public newCount: number;
     public acceptedCount: number;
     public rejectedCount: number;
+    public allCount:number;
     // candidate: Candidate;
     constructor(private httpService: HttpService, private processes: ProcessesService) { }
 
@@ -29,10 +30,10 @@ export class CandidateServise {
     }
     rejectProcess(id: number) {
         console.log("I whant to reject id: " + id);
-        // this.httpService.getCandidate()
-        //     .subscribe(candidate =>
-        //         this.updateCandidate(candidate)
-        //     );
+        this.httpService.rejectProcess(id)
+            .subscribe(candidate =>
+                this.updateCandidate(candidate)
+            );
     }
     updateCandidate(candidate: Candidate) {
         this.processes.sortProcesses(candidate.processes);
@@ -40,6 +41,7 @@ export class CandidateServise {
         this.acceptedCount = candidate.acceptedCount;
         this.rejectedCount = candidate.rejectedCount;
         this.name = candidate.name;
+        this.allCount=candidate.newCount+candidate.acceptedCount+candidate.rejectedCount;
     }
 
     someLog() {
