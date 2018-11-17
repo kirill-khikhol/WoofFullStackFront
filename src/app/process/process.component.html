@@ -1,10 +1,10 @@
 <div class="container bg-white">
     <div class="row">
         <div class="col-3">
-            <h2>{{process.title}}</h2>
-            <p>burito burito taco man</p>
+            <h2>{{process.position.title}}</h2>
+            <p>at {{process.position.employerName}}</p>
             <div class="text-muted">{{process.creationTime}}</div>
-            <p *ngFor="let skill of process.techStack" class="badge badge-pill badge-secondary">
+            <p *ngFor="let skill of process.position.techStack" class="badge badge-pill badge-secondary">
                 {{skill}}
             </p>
         </div>
@@ -47,9 +47,9 @@
         </div>
         <div class="col-3">
             <div class="d-flex justify-content-end"><span class="badge badge-secondary">{{process.status}}</span></div>
-            <div class="d-flex flex-column align-content-end" *ngIf="process.status=='New'">
-                <button class="btn btn-block" (click)="accseptStatus()">Accsept</button><br />
-                <button class="btn btn-block" (click)="rejectStatus()">Reject</button>
+            <div class="d-flex flex-column align-content-end" *ngIf="process.status=='NEW'">
+                <button class="btn btn-block" (click)="accept()">Accept</button><br />
+                <button class="btn btn-block" (click)="reject()">Reject</button>
             </div>
         </div>
     </div>

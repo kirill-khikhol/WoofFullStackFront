@@ -1,9 +1,10 @@
-import { AllProcessesComponent } from '../app/all-processes/all-processes.component';
+import { Position } from './position.model';
 export class Process {
-
-    constructor(public id: number,
-        public title: string,
-        public techStack: string[],
+    constructor(
+        public id: number,
+        public position: Position,
+        // public title: string,
+        // public techStack: string[],
         public status: string,
         public creationTime: string,
         public technologiesExpectationFulfillmentAmount: number,
@@ -13,7 +14,5 @@ export class Process {
         public locationExpectationFulfillment: boolean,
         public location: string
     ) { }
-    // getTitle(): string {
-    //     return this.title;
-    // }
+
 }

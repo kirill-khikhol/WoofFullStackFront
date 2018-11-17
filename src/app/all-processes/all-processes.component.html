@@ -1,35 +1,9 @@
-<div class="container-fluid bg-dark">
-  <div class="container">
-    <h1>Processes</h1>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a routerLink="/processes" class="nav-link" (click)="showCondition='New'">New({{newCount}})</a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/processes" class="nav-link" (click)="showCondition='Accsepted'">Accsepted({{accseptedCount}})</a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/processes" class="nav-link" (click)="showCondition='All'">All({{allProcesses.length}})</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <br/>
-
-    <!-- <router-outlet></router-outlet> -->
-
-    <p *ngFor="let process of allProcesses">
-      <app-process *ngIf="process.status=='New'&&(showCondition=='New'||showCondition=='All')" [process]="process"
-        (changeStatus)="counNews()"></app-process>
-    </p>
-    <p *ngFor="let process of allProcesses">
-      <app-process *ngIf="process.status=='Accsepted'&&(showCondition=='Accsepted'||showCondition=='All')" [process]="process"
-        (changeStatus)="counNews()"></app-process>
-    </p>
-    <p *ngFor="let process of allProcesses">
-      <app-process *ngIf="process.status=='Rejected'&& showCondition=='All'" [process]="process" (changeStatus)="counNews()"></app-process>
-    </p>
-  </div>
-</div>
+<p *ngFor="let process of processes.newProcesses">
+    <app-process [process]="process" (changeStatus)="processes.changeStatus()"></app-process>
+</p>
+<p *ngFor="let process of processes.acceptedProcesses">
+    <app-process [process]="process" (changeStatus)="processes.changeStatus()"></app-process>
+</p>
+<p *ngFor="let process of processes.allProcesses">
+    <app-process [process]="process" (changeStatus)="processes.changeStatus()"></app-process>
+</p>

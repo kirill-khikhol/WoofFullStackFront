@@ -1,3 +1,4 @@
-<p>
-  new-processes works!
+<p *ngFor="let process of processes.newProcesses">
+  <!-- <app-process [process]="process" (changeStatus)="changeStatus($event)"></app-process> -->
+  <app-process [process]="process"></app-process>
 </p>
