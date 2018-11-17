@@ -10,29 +10,11 @@ import { CandidateServise } from 'src/services/candidate.service';
   providers: [ProcessesService,CandidateServise]
 })
 export class ProcessesComponent implements OnInit {
-  allProcesses: Process[] = [];
-  newCount: number = 0;
-  acceptedCount: number = 0;
-  showCondition: string = "New";
-  constructor(private processes: ProcessesService, private candidate:CandidateServise) { }
 
-  counNews() {
-    this.newCount = 0;
-    this.acceptedCount = 0;
-    this.allProcesses.forEach(e => {
-      if (e.status == "New") {
-        this.newCount++;
-      } else if (e.status == "Accepted") {
-        this.acceptedCount++;
-      }
-    });
-  }
+  constructor(private processes: ProcessesService, private candidate:CandidateServise) { }
 
   ngOnInit() {
     this.candidate.getCandidate();
-    // this.candidate.acceptProcess(20);
-    // this.processes.getCandidate();
-    console.log("newProcesses = " + this.processes.newProcesses.length);
   }
 
 }

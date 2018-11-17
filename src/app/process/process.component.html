@@ -1,9 +1,9 @@
-<div class="container bg-white">
+<div class="container bg-white border">
     <div class="row">
         <div class="col-3">
             <h2>{{process.position.title}}</h2>
             <p>at {{process.position.employerName}}</p>
-            <div class="text-muted">{{process.creationTime}}</div>
+            <div class="text-muted">{{process.creationTime}} {{process.timeUnit}} ago</div>
             <p *ngFor="let skill of process.position.techStack" class="badge badge-pill badge-secondary">
                 {{skill}}
             </p>
@@ -11,45 +11,44 @@
 
         <div class="col-2 container">
 
-            <div class="col-1">
-                <p *ngIf="process.locationExpectationFulfillment; else eLoc">
-                    T
-                </p>
-                <ng-template #eLoc>
-                    <p> F</p>
-                </ng-template>
-            </div>
-            <div class="col-11">
-                <p>Prefered Location</p><br />
+            <img class="check img" src="./assets/baseline-check-24px.svg" alt="T" *ngIf="process.locationExpectationFulfillment; else eLoc">
+            <ng-template #eLoc>
+                <img class="cross img" src="./assets/baseline-close-24px.svg" alt="F">
+            </ng-template>
+            <div class="expectations"><strong>Prefered Location</strong>
                 <p>{{process.location}}</p>
             </div>
 
         </div>
         <div class="col-2 container">
-            <p *ngIf="process.salaryExpectationFulfillment; else eSal">
-                T
-            </p>
+
+            <img class="check img" src="./assets/baseline-check-24px.svg" alt="T" *ngIf="process.salaryExpectationFulfillment; else eSal">
             <ng-template #eSal>
-                <p> F</p>
+                <img class="cross img" src="./assets/baseline-close-24px.svg" alt="F">
             </ng-template>
-            <p>Mounthly salary</p><br />
-            <p>{{process.salary}} mounthly</p>
+            <div class="expectations"><strong>Mounthly salary</strong>
+                <p>{{process.salary}} mounthly</p>
+            </div>
         </div>
         <div class="col-2 container">
-            <p *ngIf="(process.technologiesExpectationFulfillmentOf-2*process.technologiesExpectationFulfillmentAmount)>=0; else eSal">
-                T
-            </p>
+
+
+
+            <img class="check img" src="./assets/baseline-check-24px.svg" alt="T" *ngIf="(process.technologiesExpectationFulfillmentOf-2*process.technologiesExpectationFulfillmentAmount)>=0; else eSal">
             <ng-template #eSal>
-                <p> F</p>
+                <img class="cross img" src="./assets/baseline-close-24px.svg" alt="F">
             </ng-template>
-            <p>Technology</p>
-            <p>{{process.technologiesExpectationFulfillmentAmount}} of {{process.technologiesExpectationFulfillmentOf}}</p>
+
+            <div class="expectations"><strong>Technology</strong>
+                <p>{{process.technologiesExpectationFulfillmentAmount}} of {{process.technologiesExpectationFulfillmentOf}}</p>
+            </div>
+            
         </div>
         <div class="col-3">
-            <div class="d-flex justify-content-end"><span class="badge badge-secondary">{{process.status}}</span></div>
-            <div class="d-flex flex-column align-content-end" *ngIf="process.status=='NEW'">
-                <button class="btn btn-block" (click)="accept()">Accept</button><br />
-                <button class="btn btn-block" (click)="reject()">Reject</button>
+            <div class="badge-cont"><span class="badge badge-secondary">{{process.status}}</span></div>
+            <div class="btn-cont" *ngIf="process.status=='NEW'">
+                <button class="btn btn-primary" (click)="accept()">Accept</button><br />
+                <button class="btn" (click)="reject()">Reject</button>
             </div>
         </div>
     </div>

@@ -6,7 +6,6 @@ export class ProcessesService {
     newProcesses: Process[] = [];
     acceptedProcesses: Process[] = [];
     rejectedProcesses: Process[] = [];
-    totalAmount: number;
 
     constructor(private httpService: HttpService) { }
 
@@ -15,6 +14,25 @@ export class ProcessesService {
         this.acceptedProcesses = [];
         this.rejectedProcesses = [];
         processes.forEach(p => {
+            let date = new Date();
+            p.creationTime=Math.round((date.valueOf()/1000-p.creationTime)/60);
+            if(p.creationTime<2){
+                p.timeUnit="minute";
+            }else if(p.creationTime<60){
+                p.timeUnit="minutes";
+            }else if(p.creationTime<60*2){
+                p.timeUnit="hour";
+                p.creationTime= Math.round(p.creationTime/60);
+            }else if(p.creationTime<60*24){
+                p.timeUnit="hours";
+                p.creationTime= Math.round(p.creationTime/60);
+            }else if(p.creationTime<60*24*2){
+                p.timeUnit="day";
+                p.creationTime= Math.round(p.creationTime/60/24);
+            }else{
+                p.timeUnit="days";
+                p.creationTime= Math.round(p.creationTime/60/24);
+            }
             switch (p.status) {
                 case "NEW": this.newProcesses.push(p); break;
                 case "ACCEPTED": this.acceptedProcesses.push(p); break;
@@ -22,18 +40,4 @@ export class ProcessesService {
             }
         });
     }
-    getCandidate() {
-        this.httpService.getCandidate()
-            .subscribe(candidate => this.sortProcesses(candidate.processes));
-    }
-
-    changeStatus(e: myEvent) {
-        // this.candidate.changeStatus(e);
-        console.log("prosessService id: " + e.id + " status: " + e.status);
-
-    }
-}
-type myEvent = {
-    id: number;
-    status: string;
 }

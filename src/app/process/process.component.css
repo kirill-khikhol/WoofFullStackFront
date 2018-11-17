@@ -1,0 +1,32 @@
+.badge-cont{
+    position: absolute;
+    top: 7px;
+    right: 7px;
+}
+.btn{
+    margin-bottom: 5px;
+    width: 100%
+}
+.btn-cont{
+    position: absolute;
+
+    bottom: 7px;
+    left: 0;
+    right: 7px;
+}
+.badge{
+    margin:1.5px;
+}
+
+.img {
+    float: left;
+    margin-top: 40px;
+}
+.expectations{
+    margin-top: 30px;
+    margin-left: 24px;
+}
+.border{
+    border-style: solid;
+    border-color: gray;
+}

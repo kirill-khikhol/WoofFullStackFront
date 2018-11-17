@@ -5,16 +5,13 @@ import { ProcessesService } from './processes.service';
 @Injectable()
 export class CandidateServise {
     public name: string;
-    // public processes: Process[],
     public newCount: number;
     public acceptedCount: number;
     public rejectedCount: number;
-    public allCount:number;
-    // candidate: Candidate;
+    public allCount: number;
     constructor(private httpService: HttpService, private processes: ProcessesService) { }
 
     getCandidate() {
-        console.log("I whant to get Candidate ");
         this.httpService.getCandidate()
             .subscribe(candidate =>
                 this.updateCandidate(candidate)
@@ -22,14 +19,12 @@ export class CandidateServise {
     }
 
     acceptProcess(id: number) {
-        console.log("I whant to accept id: " + id);
         this.httpService.acceptProcess(id)
             .subscribe(candidate =>
                 this.updateCandidate(candidate)
             );
     }
     rejectProcess(id: number) {
-        console.log("I whant to reject id: " + id);
         this.httpService.rejectProcess(id)
             .subscribe(candidate =>
                 this.updateCandidate(candidate)
@@ -43,14 +38,4 @@ export class CandidateServise {
         this.name = candidate.name;
         this.allCount=candidate.newCount+candidate.acceptedCount+candidate.rejectedCount;
     }
-
-    someLog() {
-        console.log("newCount: " + this.newCount);
-        console.log("acceptedCount: " + this.acceptedCount);
-        console.log("rejectedCount: " + this.rejectedCount);
-    }
-}
-type myEvent = {
-    id: number;
-    status: string;
 }

@@ -9,7 +9,6 @@ import { ProcessesService } from 'src/services/processes.service';
 export class NewProcessesComponent implements OnInit {
 
   constructor(private processes:ProcessesService) { }
-
   
   ngOnInit() {
   }

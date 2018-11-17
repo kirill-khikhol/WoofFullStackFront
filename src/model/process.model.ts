@@ -3,10 +3,9 @@ export class Process {
     constructor(
         public id: number,
         public position: Position,
-        // public title: string,
-        // public techStack: string[],
         public status: string,
-        public creationTime: string,
+        public creationTime: number,
+        public timeUnit:string,
         public technologiesExpectationFulfillmentAmount: number,
         public technologiesExpectationFulfillmentOf: number,
         public salaryExpectationFulfillment: boolean,

@@ -4,9 +4,6 @@ import { Candidate } from "src/model/candidate.model";
 import { Observable } from "rxjs";
 const BASE_URL = "http://localhost:8080";
 
-
-
-
 @Injectable()
 export class HttpService {
     constructor(private http: HttpClient) { }

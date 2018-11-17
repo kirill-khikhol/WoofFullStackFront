@@ -1,7 +1,7 @@
-<div class="container-fluid bg-dark">
-    <div class="container">
+<div class="container-fluid bg-light">
+    <div class="container ">
       <h1>Processes</h1>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -17,19 +17,6 @@
         </div>
       </nav>
       <br/>
-  
       <router-outlet></router-outlet>
-  
-      <!-- <p *ngFor="let process of processes.newProcesses">
-        <app-process *ngIf="(showCondition=='New'||showCondition=='All')" [process]="process"
-          (changeStatus)="counNews()"></app-process>
-      </p>
-      <p *ngFor="let process of acceptedProcesses">
-        <app-process *ngIf="(showCondition=='Accepted'||showCondition=='All')" [process]="process"
-          (changeStatus)="counNews()"></app-process>
-      </p>
-      <p *ngFor="let process of allProcesses">
-        <app-process *ngIf="showCondition=='All'" [process]="process" (changeStatus)="counNews()"></app-process>
-      </p> -->
     </div>
   </div>
