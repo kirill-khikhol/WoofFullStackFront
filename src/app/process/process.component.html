@@ -34,7 +34,7 @@
 
 
 
-            <img class="check img" src="./assets/baseline-check-24px.svg" alt="T" *ngIf="(process.technologiesExpectationFulfillmentOf-2*process.technologiesExpectationFulfillmentAmount)>=0; else eSal">
+            <img class="check img" src="./assets/baseline-check-24px.svg" alt="T" *ngIf="(process.technologiesExpectationFulfillmentOf-2*process.technologiesExpectationFulfillmentAmount)<0; else eSal">
             <ng-template #eSal>
                 <img class="cross img" src="./assets/baseline-close-24px.svg" alt="F">
             </ng-template>
